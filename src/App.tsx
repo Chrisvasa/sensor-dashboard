@@ -1,24 +1,28 @@
-import { useEffect, useState } from 'react';
-import { SensorData } from './types/SensorData';
-import { SensorCard } from './components/SensorCard';
-import { mockSensors } from './mockData/mockSensors';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Header } from '@/components/Header';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import LandingPage from './pages/LandingPage';
+import SensorPage from './pages/SensorPage';
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: Infinity,
+      cacheTime: Infinity,
+    },
+  },
+});
 
 const App = () => {
-  const [sensors, setSensors] = useState<SensorData[]>([]);
-
-  useEffect(() => {
-    // Simulate data fetching with a delay
-    setTimeout(() => {
-      setSensors(mockSensors);
-    }, 500); // 500ms delay to mimic API call
-  }, []);
-
   return (
-    <div className="container mx-auto p-4">
-      {sensors.map((sensor) => (
-        <SensorCard key={sensor.id} sensor={sensor} />
-      ))}
-    </div>
+    <BrowserRouter>
+    <QueryClientProvider client={queryClient} />
+      <Header />
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/sensors" element={<SensorPage />} />
+        </Routes>
+    </BrowserRouter>
   );
 };
 

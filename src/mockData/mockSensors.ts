@@ -1,4 +1,3 @@
-// src/mockData/mockSensors.ts
 import { SensorData } from '../types/SensorData';
 
 export const mockSensors: SensorData[] = [
@@ -37,5 +36,4 @@ export const mockSensors: SensorData[] = [
     date: '2023-08-01T11:00:00Z',
     location: 'Building B',
   },
-  // Add more mock data as needed
 ];

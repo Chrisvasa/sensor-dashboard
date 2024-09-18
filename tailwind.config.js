@@ -10,6 +10,9 @@ module.exports = {
   ],
   theme: {
   	extend: {
+		backgroundImage: {
+			'bg-image': "url('/src/assets/bg.jpg",
+		},
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
