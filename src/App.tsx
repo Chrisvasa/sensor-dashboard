@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { SensorData } from './types/SensorData';
 import { SensorCard } from './components/SensorCard';
 import { mockSensors } from './mockData/mockSensors';
 
-const App: React.FC = () => {
+const App = () => {
   const [sensors, setSensors] = useState<SensorData[]>([]);
 
   useEffect(() => {
