@@ -47,8 +47,7 @@ const SensorDetail: React.FC = () => {
 
   return (
     <div className="p-4 rgb(13, 13, 13) text-white">
-      <h2 className="text-2xl font-bold mb-4">{sensor.name}</h2>
-      <Card>
+      <Card className="border-transparent focus:border-transparent focus:ring-0">
         <CardHeader>
             <CardTitle>{sensor.name}</CardTitle>
             <CardDescription>January - June 2024</CardDescription>
