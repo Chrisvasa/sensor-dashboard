@@ -12,26 +12,16 @@ module.exports = {
   ],
   theme: {
   	extend: {
-		backgroundImage: {
-			'bg-image': "url('/src/assets/bg.jpg",
-			'custom-pattern': `linear-gradient(30deg, black 12%, transparent 12.5%, transparent 87%, black 87.5%, black),
-                          linear-gradient(150deg, black 12%, transparent 12.5%, transparent 87%, black 87.5%, black),
-                          linear-gradient(30deg, black 12%, transparent 12.5%, transparent 87%, black 87.5%, black),
-                          linear-gradient(150deg, black 12%, transparent 12.5%, transparent 87%, black 87.5%, black),
-                          linear-gradient(60deg, rgba(0, 0, 0, 0.7) 25%, transparent 25.5%, transparent 75%, rgba(0, 0, 0, 0.7) 75%, rgba(0, 0, 0, 0.7)),
-                          linear-gradient(60deg, rgba(0, 0, 0, 0.7) 25%, transparent 25.5%, transparent 75%, rgba(0, 0, 0, 0.7) 75%, rgba(0, 0, 0, 0.7))`,
-		},
-		backgroundSize: {
-			'custom-size': '40px 70px',
-		},
-		backgroundPosition: {
-			'custom-position': '0 0, 0 0, 20px 35px, 20px 35px, 0 0, 20px 35px',
-		},
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
   		},
+		  boxShadow: {
+			'custom': 'rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px',
+			'mac': 'rgba(0, 0, 0, 0.2) 0px 20px 30px',
+			'clean': 'rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px'
+		  },
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',

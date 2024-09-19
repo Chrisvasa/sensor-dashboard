@@ -9,6 +9,7 @@ export const Header = () => {
 				</div>
 				<ul className="hidden md:flex space-x-4">
 					<Link to="/sensors">Sensor Data</Link>
+					<Link to="/stats">Stats</Link>
 				</ul>
 			</nav>
 		</header>

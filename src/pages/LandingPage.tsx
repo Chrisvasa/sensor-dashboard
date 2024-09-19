@@ -10,7 +10,7 @@ const LandingPage = () => {
   };
 
   return (
-    <div className="relative h-screen w-full bg-transparent bg-gradient-to-b from-zinc-950 to-black">
+    <div className="relative h-screen w-full bg-transparent bg-gradient-to-b from-zinc-950 to-black max-h-[100vh] shadow-custom" >
       <div className="absolute inset-0 flex items-center justify-center text-slate-50 pl-32">
         <div className="relative flex-1 flex items-center justify-center">
           <img 
