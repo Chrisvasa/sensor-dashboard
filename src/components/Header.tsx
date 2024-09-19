@@ -5,7 +5,7 @@ export const Header = () => {
 		<header className="fixed top-0 left-0 w-full bg-slate-50 shadow-md z-50">
 			<nav className="container mx-auto p-4 flex items-center justify-between flex-wrap">
 				<div className="text-xl font-bold">
-					<Link to="/">Sensor Dashboard</Link>
+					<Link to="/">Sensor Chadboard</Link>
 				</div>
 				<ul className="hidden md:flex space-x-4">
 					<Link to="/sensors">Sensor Data</Link>
