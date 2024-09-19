@@ -21,11 +21,7 @@ A React and TypeScript-based sensor dashboard built with Vite and shadcn/ui comp
 
 ## **Description**
 
-[Provide a detailed description of your project here. Explain what it does, the problem it solves, and any key information.]
-
-Example:
-
-> Sensor Dashboard is a web application that allows users to monitor real-time data from various sensors deployed in different locations. Built with modern technologies like React, Vite, and shadcn/ui, it provides an interactive and user-friendly interface to visualize temperature readings, sensor statuses, and historical data trends.
+Sensor Dashboard is a web application that allows users to monitor real-time data from various sensors deployed in different locations. Built with modern technologies like React, Vite, and shadcn/ui, it provides an interactive and user-friendly interface to visualize temperature readings, sensor statuses, and historical data trends.
 
 ## **Features**
 
@@ -74,7 +70,7 @@ Create a .env file in the root of your project and add:
 The application will be available at http://localhost:5173.
 
 ### Backend Setup
-**LINK TO REPO HERE**
+[Link to Backend REPO](https://github.com/NicoleNilsson/esp32BackendTemp)
 
 ## Usage
 1. Access the application:
