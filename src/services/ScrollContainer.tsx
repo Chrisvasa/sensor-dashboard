@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import LandingPage from '../pages/LandingPage';
-import SensorPage from '../pages/SensorPage';
 import SensorStatuspage from '../pages/SensorStatusPage';
 
 const scrollToSection = (sectionIndex: number) => {
@@ -33,9 +32,6 @@ const ScrollContainer = () => {
       </div>
       <div className="section" style={{ height: 'auto' }}>
         <SensorStatuspage />
-      </div>
-      <div className="section" style={{ height: '100vh' }}>
-        <SensorPage />
       </div>
     </div>
   );

@@ -5,17 +5,14 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { mockSensors } from "../mockData/mockSensors";
 
 
-// Create chartData by transforming mockSensors to suit the chart
 const chartData = mockSensors.map((sensor) => ({
-    key: sensor.id, // Use unique identifier
+    key: sensor.id,
     name: sensor.name,
     temperature: sensor.temperature,
     date: sensor.date,
     location: sensor.location,
 }));
 
-// Assuming mockSensors have an array of historical data points for each sensor
-// If mockSensors only have a current value, you need to adjust the structure
 const chartConfig = {
   temperature: {
     label: "Temperature",
@@ -36,7 +33,7 @@ export function StatChart() {
         <ChartContainer config={chartConfig}>
           <AreaChart
             accessibilityLayer
-            data={chartData} // Ensure chartData has the appropriate structure
+            data={chartData}
             margin={{
               left: 12,
               right: 12,
@@ -44,14 +41,13 @@ export function StatChart() {
           >
             <CartesianGrid vertical={false} />
             <XAxis
-              dataKey="name" // Use the sensor name for the X-axis
+              dataKey="name"
               tickLine={false}
               axisLine={false}
               tickMargin={8}
               tickFormatter={(value) => {
-                // Ensure the value is a string before slicing
                 if (typeof value === 'string') {
-                  return value.slice(0, 3); // Optionally truncate name
+                  return value.slice(0, 3);
                 }
                 return value;
               }}
@@ -61,10 +57,9 @@ export function StatChart() {
               cursor={false}
               content={<ChartTooltipContent indicator="dot" hideLabel />}
             />
-            {/* Render an <Area> for each sensor */}
             {mockSensors.map((sensor) => (
               <Area
-                key={sensor.id} // Ensure each area has a unique key
+                key={sensor.id}
                 dataKey="temperature"
                 type="linear"
                 fill="var(--color-desktop)"
