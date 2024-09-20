@@ -26,6 +26,14 @@ export function SensorMeasurementsChart({ data, isShortDateRange }: SensorMeasur
     return isShortDateRange ? format(date, "MMM d") : format(date, "MMM yyyy")
   }
 
+  const formatYAxis = (value: number) => {
+    if (isMobile) {
+      if (value >= 1000000) return `${(value / 1000000).toFixed(1)}M`
+      if (value >= 1000) return `${(value / 1000).toFixed(1)}K`
+    }
+    return value.toLocaleString()
+  }
+
   const chartConfig = {
     measurements: {
       label: "Total Measurements",
@@ -50,7 +58,7 @@ export function SensorMeasurementsChart({ data, isShortDateRange }: SensorMeasur
             stroke="hsl(var(--muted-foreground))"
             tickFormatter={formatXAxis}
             interval={isMobile ? 'preserveStartEnd' : (isShortDateRange ? 0 : 'preserveStartEnd')}
-            angle={isMobile ? -45 : -45}
+            angle={-45}
             textAnchor="end"
             height={isMobile ? 60 : 70}
             tick={{ fontSize: isMobile ? 10 : 12 }}
@@ -58,9 +66,10 @@ export function SensorMeasurementsChart({ data, isShortDateRange }: SensorMeasur
           />
           <YAxis 
             stroke="hsl(var(--muted-foreground))" 
-            width={isMobile ? 30 : 40}
+            width={isMobile ? 40 : 50}
             tick={{ fontSize: isMobile ? 10 : 12 }}
-            tickFormatter={(value) => value.toFixed(0)}
+            tickFormatter={formatYAxis}
+            tickCount={5}
           />
           <ChartTooltip 
             cursor={{ fill: "rgba(255, 255, 255, 0.1)" }} 
