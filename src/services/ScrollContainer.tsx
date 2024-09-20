@@ -1,8 +1,7 @@
-// ScrollContainer.tsx
 import { useEffect } from 'react';
 import LandingPage from '../pages/LandingPage';
 import SensorPage from '../pages/SensorPage';
-import StatPage from '../pages/StatPage';
+import SensorStatuspage from '../pages/SensorStatusPage';
 
 const scrollToSection = (sectionIndex: number) => {
     const section = document.querySelectorAll('.section')[sectionIndex];
@@ -32,8 +31,8 @@ const ScrollContainer = () => {
       <div className="section" style={{ height: '100vh' }}>
         <LandingPage />
       </div>
-      <div className="section" style={{ height: '100vh' }}>
-        <StatPage />
+      <div className="section" style={{ height: 'auto' }}>
+        <SensorStatuspage />
       </div>
       <div className="section" style={{ height: '100vh' }}>
         <SensorPage />
