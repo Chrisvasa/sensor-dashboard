@@ -3,6 +3,7 @@ import { ArrowUpDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Sensor } from "@/services/data";
 
 type SensorsTableProps = {
   sensors: Array<Sensor>;

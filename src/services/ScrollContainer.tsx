@@ -2,6 +2,8 @@ import { useEffect } from 'react';
 import LandingPage from '../pages/LandingPage';
 import SensorStatuspage from '../pages/SensorStatusPage';
 
+// PROBABLY MOVE THIS INTO ANOTHER FOLDER???
+
 const scrollToSection = (sectionIndex: number) => {
     const section = document.querySelectorAll('.section')[sectionIndex];
     if (section) {
