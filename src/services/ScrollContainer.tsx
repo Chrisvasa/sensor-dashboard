@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import LandingPage from '../pages/LandingPage';
 import SensorStatuspage from '../pages/SensorStatusPage';
 import DashboardPage from '../components/dashboardUI'
+import AboutUs from '../pages/AboutUsPage'
 
 // PROBABLY MOVE THIS INTO ANOTHER FOLDER???
 
@@ -38,6 +39,9 @@ const ScrollContainer = () => {
       </div>
       <div className="section" style={{ height: 'auto' }}>
         <DashboardPage />
+      </div>
+      <div className ="section" style={{ height: '100vh'}}>
+        <AboutUs />
       </div>
     </div>
   );
