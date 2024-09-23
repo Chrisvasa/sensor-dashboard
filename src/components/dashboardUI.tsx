@@ -25,6 +25,11 @@ export default function Dashboard() {
   useEffect(() => {
     // Set the mock data as the sensor data
     setSensorData(mockSensors);
+
+
+    if(mockSensors.length> 0){
+        setSelectedSensorId(mockSensors[0].id);
+    }
   }, []);
 
   // Find the selected sensor using the sensorData state instead of mockSensors
