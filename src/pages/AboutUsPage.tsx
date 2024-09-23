@@ -18,15 +18,15 @@ const teamMembers: TeamMember[] = [
     id: 1,
     name: "Robert Johnson",
     role: "Frontend",
-    image: "/src/assets/robert.jpg?height=400&width=400",
+    image: "/src/assets/images/clownbert.png?height=400&width=400",
     bio: "Robert has over 15 years of experience in tech leadership and is passionate about creating innovative solutions.",
-    resumeUrl: "/src/assets/resumes/robert-johnson-resume.pdf"
+    resumeUrl: "/src/assets/resumes/robert-johnson-cv.pdf"
   },
   {
     id: 2,
     name: "Christopher Vasankari",
     role: "Frontend",
-    image: "/src/assets/robert.jpg?height=400&width=400",
+    image: "/src/assets/images/oldchum.png?height=400&width=400",
     bio: "Christopher is a full-stack developer with a keen interest in AI and machine learning technologies.",
     resumeUrl: "/bob-smith-resume.pdf"
   },
@@ -34,7 +34,7 @@ const teamMembers: TeamMember[] = [
     id: 3,
     name: "Nicole Nilsson",
     role: "Backend",
-    image: "/src/assets/robert.jpg?height=400&width=400",
+    image: "/src/assets/images/Nicolen.jpg?height=400&width=400",
     bio: "Nicole brings her extensive experience in finance to help guide our company's growth and investment strategies.",
     resumeUrl: "/carol-williams-resume.pdf"
   },
@@ -42,9 +42,9 @@ const teamMembers: TeamMember[] = [
     id: 4,
     name: "Erik Pettersson",
     role: "Embedded",
-    image: "/src/assets/robert.jpg?height=400&width=400",
+    image: "/src/assets/images/erkaP.jpg?height=400&width=400",
     bio: "Erik excels in optimizing business operations and fostering a positive company culture.",
-    resumeUrl: "/david-brown-resume.pdf"
+    resumeUrl: "/src/assets/resumes/erik-pettersson-cv.pdf"
   }
 ]
 
@@ -64,14 +64,19 @@ export default function AboutUs() {
               height={200}
               className="rounded-full mx-auto mb-4 cursor-pointer hover:opacity-80 transition-opacity"
               onClick={() => setSelectedMember(member)}
+              style={{ width: '200px', height: '200px', borderRadius: '50%', objectFit: 'cover' }}
             />
             <h2 className="text-xl font-semibold">{member.name}</h2>
             <p className="text-gray-600">{member.role}</p>
           </div>
         ))}
       </div>
-      <div className="flex justify-center mt-8">
-        <h1>Project And Team Info Goes Here</h1>
+      <div className="flex flex-col items-center justify-center mt-8 text-gray-600 bg-white w-auto px-4 py-8 md:px-6 md:py-10">
+  <h1 className="text-2xl font-bold mb-4">Meet the Team Behind the Project</h1>
+  <p className="text-center mb-6 max-w-4xl">
+    Our project is the culmination of hard work and dedication from a diverse team of experts. 
+    Each member has brought their unique skills and experiences to ensure the success of this initiative.
+  </p>
       </div>
 
       <Dialog open={selectedMember !== null} onOpenChange={() => setSelectedMember(null)}>
@@ -88,6 +93,7 @@ export default function AboutUs() {
                 width={150}
                 height={150}
                 className="rounded-full mx-auto mb-4"
+                style={{ width: '150px', height: '150px', borderRadius: '50%', objectFit: 'cover' }}
               />
               <p className="text-center mb-4 text-slate-50">{selectedMember.bio}</p>
               <div className="text-center">
