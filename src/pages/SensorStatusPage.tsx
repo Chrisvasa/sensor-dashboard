@@ -8,7 +8,8 @@ import { SensorTable } from "../components/SensorTable";
 import { useFilteredData} from "../hooks/useFilteredData";
 import { useGroupedData } from "../hooks/useGroupedData";
 import { useSortedSensors } from "../hooks/useSortedSensors";
-import { sensorData, sensors, SortConfig } from "../services/data";
+import { testData } from "../services/data";
+import { SortConfig } from "../services/data";
 import { DateRange } from "react-day-picker";
 
 const DEFAULT_DATE_RANGE: DateRange = {
@@ -28,12 +29,18 @@ export default function SensorStatusPage() {
     }
   };
 
-  const filteredData = useFilteredData(sensorData, dateRange);
-  const groupedData = useGroupedData(filteredData, dateRange);
+  const sensors: Sensor[] = testData;
+
+  const filteredMeasurements = useFilteredData(sensors, dateRange);
+  const groupedData = useGroupedData(filteredMeasurements, dateRange);
   const { sortedSensors, requestSort } = useSortedSensors(sensors, sortConfig, setSortConfig);
 
-  const totalMeasurements = groupedData.reduce((sum, entry) => sum + entry.totalMeasurements, 0);
-  const averageMeasurementsPerDay = totalMeasurements / (filteredData.length || 1);
+  const totalMeasurements = filteredMeasurements.length;
+
+  const dateRangeLength =
+    dateRange?.from && dateRange?.to ? differenceInDays(dateRange.to, dateRange.from) + 1 : 1;
+
+  const averageMeasurementsPerDay = totalMeasurements / dateRangeLength;
 
   const isShortDateRange = useMemo(() => {
     if (dateRange?.from && dateRange?.to) {

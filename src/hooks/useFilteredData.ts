@@ -1,16 +1,17 @@
 import { useMemo } from "react";
-import { SensorData } from "@/types/SensorData";
 import { DateRange } from "react-day-picker";
+import { Sensor } from "../types/Sensor";
+import { Measurement } from "../types/Measurement";
 
 // Filters the sensor data based on the selected date range.
-export function useFilteredData(sensorData: Array<SensorData>, dateRange: DateRange | undefined) {
+export function useFilteredData(sensors: Sensor[], dateRange: DateRange | undefined): Measurement[] {
   return useMemo(() => {
-    return sensorData.filter(
-      (entry) =>
-        dateRange?.from &&
-        dateRange?.to &&
-        new Date(entry.date) >= dateRange.from &&
-        new Date(entry.date) <= dateRange.to
-    );
-  }, [sensorData, dateRange]);
+    const allMeasurements = sensors.flatMap((sensor) => sensor.measurements);
+
+    return allMeasurements.filter((measurement) => {
+      if (!dateRange?.from || !dateRange.to) return true;
+      const measurementDate = new Date(measurement.measurementTime);
+      return measurementDate >= dateRange.from && measurementDate <= dateRange.to;
+    });
+  }, [sensors, dateRange]);
 }
