@@ -2,6 +2,7 @@ import { SensorData } from '../types/SensorData';
 
 export const mockSensors: SensorData[] = [
   {
+    totalMeasurements: 100,
     id: 1,
     name: 'Sensor A',
     temperature: 22.5,
@@ -13,6 +14,7 @@ export const mockSensors: SensorData[] = [
     ]
   },
   {
+    totalMeasurements: 100,
     id: 2,
     name: 'Sensor B',
     temperature: 30.1,
@@ -24,6 +26,7 @@ export const mockSensors: SensorData[] = [
     ],
   },
   {
+    totalMeasurements: 100,
     id: 3,
     name: 'Sensor C',
     temperature: 14.1,
@@ -35,6 +38,7 @@ export const mockSensors: SensorData[] = [
     ],
   },
   {
+    totalMeasurements: 100,
     id: 4,
     name: 'Sensor D',
     temperature: 24.5,
@@ -56,6 +60,7 @@ export const mockSensors: SensorData[] = [
     ],
   },
   {
+    totalMeasurements: 100,
     id: 5,
     name: 'Sensor E',
     temperature: 17.7,
