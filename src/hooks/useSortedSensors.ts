@@ -11,7 +11,6 @@ export function useSortedSensors(
   const sensorsWithComputedFields = useMemo(() => {
     return sensors.map((sensor) => ({
       ...sensor,
-      uptime: computeUptime(sensor),
       lastMeasurement: getLastMeasurement(sensor),
     }));
   }, [sensors]);
@@ -38,7 +37,7 @@ export function useSortedSensors(
     return sortableSensors;
   }, [sensorsWithComputedFields, sortConfig]);
 
-  const requestSort = (key: keyof Sensor | 'uptime' | 'lastMeasurement') => {
+  const requestSort = (key: keyof Sensor | 'lastMeasurement') => {
     let direction: 'asc' | 'desc' = 'asc';
     if (sortConfig && sortConfig.key === key && sortConfig.direction === 'asc') {
       direction = 'desc';
@@ -47,12 +46,6 @@ export function useSortedSensors(
   };
 
   return { sortedSensors, requestSort };
-}
-
-function computeUptime(sensor: Sensor): number {
-  // Placeholder: Implement actual uptime calculation
-  // For example, based on measurements frequency or status over time
-  return sensor.status ? 99.9 : 95.0; // Example values
 }
 
 function getLastMeasurement(sensor: Sensor): number | null {
