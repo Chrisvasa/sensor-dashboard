@@ -1,16 +1,16 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { differenceInDays } from "date-fns";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { SensorMeasurementsChart } from "@/components/SensorMeasurementChart";
+import { DateRange } from "react-day-picker";
+
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card";
+import { SensorMeasurementsChart } from "../components/SensorMeasurementChart";
 import { StatCard } from "../components/StatCard";
 import { DateRangePicker } from "../components/DateRangePicker";
 import { SensorTable } from "../components/SensorTable";
-import { useFilteredData} from "../hooks/useFilteredData";
+import { useFilteredData } from "../hooks/useFilteredData";
 import { useGroupedData } from "../hooks/useGroupedData";
 import { useSortedSensors } from "../hooks/useSortedSensors";
-import { testData } from "../services/data";
-import { SortConfig } from "../services/data";
-import { DateRange } from "react-day-picker";
+import { Sensor, SortConfig } from "../types/SensorTypes";
 
 const DEFAULT_DATE_RANGE: DateRange = {
   from: new Date(2024, 0, 1),
@@ -20,16 +20,55 @@ const DEFAULT_DATE_RANGE: DateRange = {
 export default function SensorStatusPage() {
   const [dateRange, setDateRange] = useState<DateRange | undefined>(DEFAULT_DATE_RANGE);
   const [sortConfig, setSortConfig] = useState<SortConfig>({ key: "name", direction: "asc" });
+  const [sensors, setSensors] = useState<Sensor[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
   const handleDateRangeChange = (range: DateRange | undefined) => {
-    if (range?.from && range.to) {
+    if (range) {
       setDateRange(range);
     } else {
       setDateRange(DEFAULT_DATE_RANGE);
     }
   };
+  
 
-  const sensors: Sensor[] = testData;
+  const FETCH_INTERVAL = 30000;
+
+  useEffect(() => {
+    let isMounted = true; // Flag to prevent state updates after unmount
+
+    const fetchSensors = async () => {
+      try {
+        const response = await fetch("http://localhost:8080/sensor/getall");
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data: Sensor[] = await response.json();
+        if (isMounted) {
+          setSensors(data);
+          setLoading(false);
+        }
+      } catch (err) {
+        if (isMounted) {
+          setError(err.message || "Error fetching data");
+          setLoading(false);
+        }
+      }
+    };
+
+    // Initial fetch
+    fetchSensors();
+
+    // Set up polling
+    const intervalId = setInterval(fetchSensors, FETCH_INTERVAL);
+
+    // Cleanup function
+    return () => {
+      isMounted = false;
+      clearInterval(intervalId);
+    };
+  }, []);
 
   const filteredMeasurements = useFilteredData(sensors, dateRange);
   const groupedData = useGroupedData(filteredMeasurements, dateRange);
@@ -48,6 +87,14 @@ export default function SensorStatusPage() {
     }
     return false;
   }, [dateRange]);
+
+  if (loading) {
+    return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
+  }
+
+  if (error) {
+    return <div className="min-h-screen flex items-center justify-center">Error: {error}</div>;
+  }
 
   return (
     <div className="min-h-screen bg-background text-foreground p-4 sm:p-6 md:p-8 space-y-6">
