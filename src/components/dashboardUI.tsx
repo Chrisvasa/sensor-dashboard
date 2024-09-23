@@ -2,10 +2,6 @@ import { SensorCard } from "../components/SensorCard";
 import { useEffect } from "react";
 import { mockSensors } from "../mockData/mockSensors";
 import { Link, Outlet, useNavigate, useParams } from "react-router-dom";
-import {
-  Menu,
-  Search,
-} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -13,8 +9,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import {
   Table,
   TableBody,
@@ -39,32 +33,6 @@ export function Dashboard() {
   return (
     <div className="flex min-h-screen w-full flex-col text-slate-50 ">
       <header className="sticky top-0 flex h-16 items-center gap-4 border-transparent focus:border-transparent focus:ring-0 bg-background px-4 md:px-6">
-        <Sheet>
-          <SheetTrigger asChild>
-            <Button
-              variant="outline"
-              size="icon"
-              className="shrink-0 md:hidden"
-            >
-              <Menu className="h-5 w-5" />
-              <span className="sr-only">Toggle navigation menu</span>
-            </Button>
-          </SheetTrigger>
-          <SheetContent side="left">
-          </SheetContent>
-        </Sheet>
-        <div className="flex w-full items-center gap-4 md:ml-auto md:gap-2 lg:gap-4">
-          <form className="ml-auto flex-1 sm:flex-initial">
-            <div className="relative">
-              <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-              <Input
-                type="search"
-                placeholder="Search products..."
-                className="pl-8 sm:w-[300px] md:w-[200px] lg:w-[300px]"
-              />
-            </div>
-          </form>
-        </div>
       </header>
       <main className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-8 ">
       <Card className="border-transparent focus:border-transparent focus:ring-0" x-chunk="dashboard-01-chunk-2">
