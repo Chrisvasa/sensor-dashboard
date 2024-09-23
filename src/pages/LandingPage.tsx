@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { ArrowDown } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { Link } from 'react-router-dom';
 
 export default function LandingPage() {
   const [isMobile, setIsMobile] = useState(false)
@@ -44,9 +45,9 @@ export default function LandingPage() {
           <p className="text-lg md:text-xl mb-8 bg-gradient-to-r from-neutral-300 to-stone-400 bg-clip-text text-transparent cursor-default">
             Monitor and analyze sensor data in real-time.
           </p>
-          <Button variant="outline" className="hover:bg-zinc-900 cursor-pointer">
-            Dashboard
-          </Button>
+          <Link to="/dashboard">
+            <Button variant="outline" className='hover:bg-zinc-900 cursor-pointer '>Dashboard</Button>
+          </Link>
         </div>
       </div>
       
