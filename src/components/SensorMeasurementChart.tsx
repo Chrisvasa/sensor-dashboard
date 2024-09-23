@@ -3,8 +3,13 @@ import { format, parse } from "date-fns"
 import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts"
 import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
 
+type GroupedDataEntry = {
+  date: string;
+  totalMeasurements: number;
+};
+
 type SensorMeasurementsChartProps = {
-  data: Array<{ date: string; totalMeasurements: number }>;
+  data: GroupedDataEntry[];
   isShortDateRange: boolean;
 };
 
