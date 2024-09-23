@@ -1,5 +1,6 @@
 import { ArrowDown } from 'lucide-react';
 import { Button } from '../components/ui/button'
+import { Link } from 'react-router-dom';
 
 const LandingPage = () => {
   const handleScroll = () => {
@@ -28,7 +29,9 @@ const LandingPage = () => {
         <div className="flex-1 flex flex-col items-start justify-center p-8">
           <h1 className="text-5xl font-bold mb-4 hover:text-slate-200 cursor-default">Welcome to<br/> Sensor Chadboard</h1>
           <p className="text-xl mb-8 bg-gradient-to-r from-neutral-300 to-stone-400 bg-clip-text text-transparent">Monitor and analyze sensor data in real-time.</p>
+          <Link to="/dashboard">
           <Button variant="outline" className='hover:bg-zinc-900 cursor-pointer '>Dashboard</Button>
+          </Link>
         </div>
       </div>
       

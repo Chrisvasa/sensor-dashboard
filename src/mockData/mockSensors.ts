@@ -7,6 +7,10 @@ export const mockSensors: SensorData[] = [
     temperature: 22.5,
     date: '2023-10-01T10:30:00Z',
     location: 'Building A',
+    chartData: [
+      { month: "January", temperature: 100},
+      { month: "February", temperature: 200},
+    ]
   },
   {
     id: 2,
@@ -14,6 +18,10 @@ export const mockSensors: SensorData[] = [
     temperature: 30.1,
     date: '2023-10-01T11:00:00Z',
     location: 'Building B',
+    chartData: [
+      { month: "January", temperature: 80},
+      { month: "February", temperature: 110},
+    ],
   },
   {
     id: 3,
@@ -21,6 +29,10 @@ export const mockSensors: SensorData[] = [
     temperature: 14.1,
     date: '2023-11-01T11:00:00Z',
     location: 'Building A',
+    chartData: [
+      { month: "January", temperature: 80 },
+      { month: "February", temperature: 110 },
+    ],
   },
   {
     id: 4,
@@ -28,6 +40,20 @@ export const mockSensors: SensorData[] = [
     temperature: 24.5,
     date: '2023-05-01T11:00:00Z',
     location: 'Building C',
+    chartData: [
+      { month: "January", temperature: 80},
+      { month: "February", temperature: 110},
+      { month: "March", temperature: 70},
+      { month: "April", temperature: 150},
+      { month: "May", temperature: 15},
+      { month: "June", temperature: 250},
+      { month: "July", temperature: 123 },
+      {month: "August", temperature: 140},
+      {month: "September", temperature: 70},
+      {month: "October", temperature: 110},
+      {month: "November", temperature: 100},
+      {month: "December", temperature: 90},
+    ],
   },
   {
     id: 5,
@@ -35,5 +61,9 @@ export const mockSensors: SensorData[] = [
     temperature: 17.7,
     date: '2023-08-01T11:00:00Z',
     location: 'Building B',
+    chartData: [
+      { month: "January", temperature: 80 },
+      { month: "February", temperature: 110},
+    ],
   },
 ];
