@@ -1,5 +1,4 @@
 import React from 'react';
-import { mockSensors } from '../mockData/mockSensors';
 import { SensorData } from "@/types/SensorData";
 import { TrendingUp } from 'lucide-react';
 import {
@@ -29,13 +28,7 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-const SensorDetail: React.FC<{ sensorId: string }> = ({ sensorId }) => {
-  const sensor = mockSensors.find((s: SensorData) => s.id === Number(sensorId));
-
-  if (!sensor) {
-    return <p>Sensor not found. Please select a valid sensor.</p>;
-  }
-
+const SensorDetail: React.FC<{ sensor: SensorData }> = ({ sensor }) => {
   return (
     <div className="p-4 text-white">
       <Card className="border-transparent focus:border-transparent focus:ring-0">

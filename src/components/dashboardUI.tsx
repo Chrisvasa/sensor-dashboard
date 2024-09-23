@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { SensorCard } from "../components/SensorCard";
 import { mockSensors } from "../mockData/mockSensors";
 import { Button } from "@/components/ui/button";
@@ -20,21 +20,15 @@ import SensorDetail from "./SensorDetail";
 
 export default function Dashboard() {
   const [selectedSensorId, setSelectedSensorId] = useState<number | null>(null);
-
-  const selectedSensor = mockSensors.find((sensor) => sensor.id === selectedSensorId);
-
-  const sensorData = mockSensors;
-
-  /* 
-  ADD LATER FOR REAL API CALL:
-
   const [sensorData, setSensorData] = useState<SensorData[]>([]);
+
   useEffect(() => {
-    fetch
-    .then(response => response.json())
-    .then(data => setSensorData(data))
-    },[]);
-  */
+    // Set the mock data as the sensor data
+    setSensorData(mockSensors);
+  }, []);
+
+  // Find the selected sensor using the sensorData state instead of mockSensors
+  const selectedSensor = sensorData.find((sensor) => sensor.id === selectedSensorId);
 
   return (
     <div className="flex min-h-screen w-full flex-col text-slate-50">
@@ -45,7 +39,7 @@ export default function Dashboard() {
           <CardHeader className="flex flex-col items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium w-full">
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-7 w-auto">
-                {mockSensors.map((sensor) => (
+                {sensorData.map((sensor) => (
                   <div
                     key={sensor.id}
                     onClick={() => setSelectedSensorId(sensor.id)}
@@ -97,7 +91,7 @@ export default function Dashboard() {
 
           {/* Directly render SensorDetail component */}
           <Card className="col-span-2 xl:col-span-1">
-            {selectedSensorId && <SensorDetail sensorId={selectedSensorId.toString()} />}
+            {selectedSensor && <SensorDetail sensor={selectedSensor} />}
           </Card>
         </div>
       </main>
