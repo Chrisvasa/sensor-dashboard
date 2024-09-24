@@ -5,4 +5,5 @@ export type Sensor = {
     name: string;
     status: boolean;
     measurements: Measurement[];
+    
   };
