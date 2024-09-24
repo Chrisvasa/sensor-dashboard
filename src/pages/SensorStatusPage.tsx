@@ -38,14 +38,14 @@ export default function SensorStatusPage() {
 
   useEffect(() => {
     let isMounted = true; // Flag to prevent state updates after unmount
-
+  
     const fetchSensors = async () => {
       try {
         const response = await fetchAllSensors();
         if (response.status !== 200) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-        const data: Sensor[] = await response.data;
+        const data: Sensor[] = response.data; // Correctly accessing data
         if (isMounted) {
           setSensors(data);
           setLoading(false);
@@ -57,6 +57,7 @@ export default function SensorStatusPage() {
         }
       }
     };
+  
 
     // Initial fetch
     fetchSensors();
