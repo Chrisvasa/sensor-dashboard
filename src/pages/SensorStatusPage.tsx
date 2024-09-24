@@ -1,7 +1,6 @@
 import { useState, useMemo, useEffect } from "react";
 import { differenceInDays } from "date-fns";
 import { DateRange } from "react-day-picker";
-
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card";
 import { SensorMeasurementsChart } from "../components/SensorMeasurementChart";
 import { StatCard } from "../components/StatCard";
@@ -10,7 +9,9 @@ import { SensorTable } from "../components/SensorTable";
 import { useFilteredData } from "../hooks/useFilteredData";
 import { useGroupedData } from "../hooks/useGroupedData";
 import { useSortedSensors } from "../hooks/useSortedSensors";
-import { Sensor, SortConfig } from "../types/SensorTypes";
+import { SortConfig } from "../services/data";
+import { Sensor } from "../types/Sensor";
+import { fetchAllSensors } from "../services/api";
 
 const DEFAULT_DATE_RANGE: DateRange = {
   from: new Date(2024, 0, 1),
@@ -40,16 +41,16 @@ export default function SensorStatusPage() {
 
     const fetchSensors = async () => {
       try {
-        const response = await fetch("http://localhost:8080/sensor/getall");
-        if (!response.ok) {
+        const response = await fetchAllSensors();
+        if (response.status !== 200) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-        const data: Sensor[] = await response.json();
+        const data: Sensor[] = await response.data;
         if (isMounted) {
           setSensors(data);
           setLoading(false);
         }
-      } catch (err) {
+      } catch (err: any) {
         if (isMounted) {
           setError(err.message || "Error fetching data");
           setLoading(false);
