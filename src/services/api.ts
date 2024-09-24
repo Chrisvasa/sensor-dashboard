@@ -12,3 +12,9 @@ export const fetchPing = () => api.get('/getOnDemand');
 // /sensor/getbyname/vardagsrum <- get by name
 // /sensor/getbyid/1/measurements/2024-09-18 <- get by date
 // /sensor/getbyname/vardagsrum/measurements/2024-09-18/2024-09-19 <- get by range
+
+// THIS IS THE SENSOR GET CALL FOR REACT-QUERY
+// export const fetchAllSensors = async () =>{
+//   const response = await api.get('/sensor/getall');
+//   return response.data;
+// }; 

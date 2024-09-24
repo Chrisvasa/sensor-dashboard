@@ -3,6 +3,7 @@ import { SensorCard } from "../components/SensorCard";
 import { Button } from "@/components/ui/button";
 import { fetchAllSensors } from "../services/api";
 import { Sensor } from "@/types/Sensor";
+import { useQuery } from "@tanstack/react-query";
 import {
   Card,
   CardContent,
@@ -42,7 +43,23 @@ export default function Dashboard() {
     loadSensors();
   }, []);
 
+  //FOR REACT QUERY
+  // const { data: sensorData = [], isLoading, error } = useQuery({
+  //   queryKey: ['sensors'],
+  //   queryFn: fetchAllSensors,
+  //   onSuccess:(data) => {
+  //     const sensors = data.data;
+  //     if(sensors.length > 0){
+  //       setSelectedSensorId(sensors[0].id);
+  //     }
+  //   },
+  // });
+
   const selectedSensor = sensorData.find(sensor => sensor.id === selectedSensorId);
+
+  //FOR REACT QUERY
+  //if(isLoading) return <div>Loading...</div>
+  //if(error) return <div>Error loading sensors</div>
 
   return (
     <div className="flex min-h-screen w-full flex-col text-slate-50">
