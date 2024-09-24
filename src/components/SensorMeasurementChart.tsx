@@ -24,12 +24,10 @@ export function SensorMeasurementsChart({ data, isShortDateRange }: SensorMeasur
   }, [])
 
   const formatXAxis = (dateString: string) => {
-    const date = parse(dateString, isShortDateRange ? "yyyy-MM-dd" : "yyyy-MM", new Date())
-    if (isMobile) {
-      return isShortDateRange ? format(date, "MMM d") : format(date, "MMM")
-    }
-    return isShortDateRange ? format(date, "MMM d") : format(date, "MMM yyyy")
-  }
+    const date = parse(dateString, isShortDateRange ? "yyyy-MM-dd" : "yyyy-MM", new Date());
+    return isShortDateRange ? format(date, "MMM d") : format(date, "MMM yyyy");
+  };
+  
 
   const formatYAxis = (value: number) => {
     if (isMobile) {

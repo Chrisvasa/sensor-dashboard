@@ -1,21 +1,26 @@
 import { useMemo } from "react";
+import { differenceInDays, format, parse } from "date-fns";
 import { DateRange } from "react-day-picker";
-import { differenceInDays, format } from "date-fns";
-import { Measurement } from "@/types/Measurement";
+import { Measurement } from "@/types/SensorTypes";
 
 type GroupedDataEntry = {
   date: string;
   totalMeasurements: number;
 };
 
-// Groups the filtered data by month or keeps it as is, depending on the date range.
-export function useGroupedData(filteredMeasurements: Measurement[], dateRange: DateRange | undefined): GroupedDataEntry[] {
+export function useGroupedData(
+  filteredMeasurements: Measurement[],
+  dateRange: DateRange | undefined
+): GroupedDataEntry[] {
   return useMemo(() => {
+    if (!filteredMeasurements.length) return [];
+
     const isShortDateRange =
       dateRange?.from && dateRange?.to && differenceInDays(dateRange.to, dateRange.from) <= 90;
 
-    const groupingFormat = isShortDateRange ? 'yyyy-MM-dd' : 'yyyy-MM';
+    const groupingFormat = isShortDateRange ? "yyyy-MM-dd" : "yyyy-MM";
 
+    // Group measurements by date
     const grouped = filteredMeasurements.reduce((acc, curr) => {
       const dateKey = format(new Date(curr.measurementTime), groupingFormat);
       if (!acc[dateKey]) {
@@ -25,6 +30,15 @@ export function useGroupedData(filteredMeasurements: Measurement[], dateRange: D
       return acc;
     }, {} as Record<string, GroupedDataEntry>);
 
-    return Object.values(grouped);
+    const groupedArray = Object.values(grouped);
+
+    // **Add this sorting step**
+    groupedArray.sort((a, b) => {
+      const dateA = parse(a.date, groupingFormat, new Date());
+      const dateB = parse(b.date, groupingFormat, new Date());
+      return dateA.getTime() - dateB.getTime();
+    });
+
+    return groupedArray;
   }, [filteredMeasurements, dateRange]);
 }
