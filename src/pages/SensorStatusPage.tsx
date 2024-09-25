@@ -100,18 +100,18 @@ export default function SensorStatusPage() {
 
   return (
     <div className="min-h-screen p-4 sm:p-6 md:p-8 space-y-6">
-      <Card className="bg-d-dark-200 border-transparent focus:border-transparent focus:ring-0 shadow-mac">
+      <Card className="bg-dark-200 border-transparent focus:border-transparent focus:ring-0 shadow-mac">
         <CardHeader className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div>
-            <CardTitle className="text-2xl text-d-primary-200 font-bold">Sensor Measurements</CardTitle>
-            <CardDescription className="text-custom-text">
+            <CardTitle className="text-2xl text-primary-200 font-bold">Sensor Measurements</CardTitle>
+            <CardDescription className="text-main">
               Overview of all sensor measurements
             </CardDescription>
           </div>
           <DateRangePicker dateRange={dateRange} setDateRange={handleDateRangeChange} />
         </CardHeader>
         <CardContent className="p-0 sm:p-6">
-          <div className="flex flex-col lg:flex-row gap-6">
+          <div className="flex flex-col lg:flex-row gap-6 text-title">
             <div className="w-full lg:w-3/4 overflow-x-auto">
               <SensorMeasurementsChart data={groupedData} isShortDateRange={isShortDateRange} />
             </div>
@@ -126,10 +126,10 @@ export default function SensorStatusPage() {
         </CardContent>
       </Card>
 
-      <Card className="bg-d-dark-200 border-transparent focus:border-transparent focus:ring-0 shadow-mac">
+      <Card className="bg-dark-200 border-transparent focus:border-transparent focus:ring-0 shadow-mac">
         <CardHeader>
-          <CardTitle className="text-2xl font-bold text-d-primary-200">Sensor Status</CardTitle>
-          <CardDescription className="text-custom-text">
+          <CardTitle className="text-2xl font-bold text-primary-200">Sensor Status</CardTitle>
+          <CardDescription className="text-main">
             Current status and uptime of all sensors
           </CardDescription>
         </CardHeader>

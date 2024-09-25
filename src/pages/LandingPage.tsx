@@ -26,7 +26,7 @@ export default function LandingPage({scrollToSection}: LandingPageProps) {
 
   return (
     <div className="relative min-h-screen w-full">
-      <div className="absolute inset-0 flex flex-col md:flex-row items-center justify-center text-custom-text p-4 md:p-8">
+      <div className="absolute inset-0 flex flex-col md:flex-row items-center justify-center text-main p-4 md:p-8">
         {!isMobile && (
           <div className="relative w-1/2 h-full">
             <img 
@@ -50,7 +50,7 @@ export default function LandingPage({scrollToSection}: LandingPageProps) {
             Monitor and analyze sensor data in real-time.
           </p>
           <Link to="/dashboard">
-            <Button variant="outline" className='bg-d-primary-100 hover:bg-d-primary-500 cursor-pointer text-black'
+            <Button variant="outline" className='bg-primary-100 hover:bg-primary-500 cursor-pointer text-black shadow-clean border-none'
             onClick={() => scrollToSection(2)}>Dashboard</Button>
           </Link>
         </div>
@@ -58,7 +58,7 @@ export default function LandingPage({scrollToSection}: LandingPageProps) {
       
       {!isMobile && (
         <div 
-          className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer text-d-primary-100" 
+          className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer text-primary-100" 
           onClick={handleScroll}
           aria-hidden="true"
         >

@@ -65,9 +65,9 @@ export default function Dashboard() {
   return (
     <div className="flex min-h-screen w-full flex-col">
       <main className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-8">
-        <Card className="border-transparent focus:border-transparent focus:ring-0 shadow-mac bg-d-dark-200">
+        <Card className="border-transparent focus:border-transparent focus:ring-0 shadow-mac bg-dark-200">
           <CardHeader className="flex flex-col items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium w-full">
+            <CardTitle className="text-main font-medium w-full">
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-7 w-auto">
                 {sensorData.map(sensor => (
                   <div
@@ -86,8 +86,8 @@ export default function Dashboard() {
         </Card>
 
         <div className="grid gap-4 md:gap-8 lg:grid-cols-2 xl:grid-cols-2">
-          <Card className="col-span-2 xl:col-span-1 bg-d-dark-200 border-transparent focus:border-transparent focus:ring-0 shadow-mac">
-            <CardHeader className="flex flex-row items-center">
+          <Card className="col-span-2 xl:col-span-1 bg-dark-200 border-transparent focus:border-transparent focus:ring-0 shadow-mac">
+            <CardHeader className="flex flex-row items-center text-main">
               <div className="grid gap-2">
                 <CardTitle>Recent Temperatures</CardTitle>
               </div>
@@ -105,7 +105,7 @@ export default function Dashboard() {
                       <TableHead>Temperature (°C)</TableHead>
                     </TableRow>
                   </TableHeader>
-                  <TableBody>
+                  <TableBody className="text-title">
                     {selectedSensor && selectedSensor.measurements.length > 0 ? (
                       selectedSensor.measurements.map((measurement, index) => (
                         <TableRow key={measurement.id}>
@@ -125,7 +125,7 @@ export default function Dashboard() {
             </CardContent>
           </Card>
 
-          <Card className="col-span-2 xl:col-span-1 bg-d-dark-200 border-transparent focus:border-transparent focus:ring-0 shadow-mac">
+          <Card className="col-span-2 xl:col-span-1 bg-dark-200 border-transparent focus:border-transparent focus:ring-0 shadow-mac">
             {selectedSensor && <SensorDetail sensor={selectedSensor} />}
           </Card>
         </div>

@@ -11,21 +11,21 @@ type StatCard = {
 
 export function StatCard({ totalMeasurements, averageMeasurementsPerDay, dateRange }: StatCard) {
   return (
-    <Card className="bg-d-dark-300 border-none shadow-img">
+    <Card className="bg-dark-300 border-none shadow-img">
       <CardHeader>
-        <CardTitle>Statistics</CardTitle>
+        <CardTitle className="text-main">Statistics</CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
         <div>
-          <p className="text-sm text-custom-title">Total Measurements:</p>
-          <p className="text-2xl font-bold text-custom-text">{totalMeasurements.toLocaleString()}</p>
+          <p className="text-sm text-main">Total Measurements:</p>
+          <p className="text-2xl font-bold text-title">{totalMeasurements.toLocaleString()}</p>
         </div>
         <div>
-          <p className="text-sm text-custom-title">Average Measurements/Day:</p>
-          <p className="text-2xl font-bold text-custom-text">{Math.round(averageMeasurementsPerDay).toLocaleString()}</p>
+          <p className="text-sm text-main">Average Measurements/Day:</p>
+          <p className="text-2xl font-bold text-title">{Math.round(averageMeasurementsPerDay).toLocaleString()}</p>
         </div>
         <div>
-          <p className="text-sm text-custom-title">Date Range:</p>
+          <p className="text-sm text-main">Date Range:</p>
           <p className="text-lg font-semibold">
             {dateRange?.from && dateRange?.to
               ? `${format(dateRange.from, "MMM d, yyyy")} - ${format(dateRange.to, "MMM d, yyyy")}`

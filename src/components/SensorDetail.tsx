@@ -26,11 +26,11 @@ const SensorDetail: React.FC<{ sensor: Sensor }> = ({ sensor }) => {
   const measurements = sensor.measurements || []; // Default to an empty array if measurements is undefined
 
   return (
-    <div className="p-4 text-white">
+    <div className="p-4 text-main">
       <Card className="border-transparent focus:border-transparent focus:ring-0">
         <CardHeader>
           <CardTitle>{sensor.name}</CardTitle>
-          <CardDescription>Recent Measurements</CardDescription>
+          <CardDescription className='text-title'>Recent Measurements</CardDescription>
         </CardHeader>
         <CardContent>
           {measurements.length > 0 ? (
@@ -45,11 +45,11 @@ const SensorDetail: React.FC<{ sensor: Sensor }> = ({ sensor }) => {
               >
                 <CartesianGrid vertical={false} />
                 <YAxis
-                  label={{ value: 'Temperature (°C)', angle: -90, position: 'insideLeft', fill: '#8884d8' }}
+                  label={{ value: 'Temperature (°C)', angle: -90, position: 'insideLeft', fill: '#c493fd' }}
                   tickLine={false}
                   axisLine={false}
                   tickFormatter={(value) => `${value}°C`}
-                  tick={{ style: { fill: '#FFFFFF' } }}
+                  tick={{ style: { fill: '#f0f0f0' } }}
                 />
                 <XAxis
                   dataKey="measurementTime"
@@ -57,18 +57,18 @@ const SensorDetail: React.FC<{ sensor: Sensor }> = ({ sensor }) => {
                   axisLine={false}
                   tickMargin={8}
                   tickFormatter={(value) => new Date(value).toLocaleDateString()}
-                  tick={{ style: { fill: '#FFFFFF' } }}
+                  tick={{ style: { fill: '#f0f0f0' } }}
                 />
                 <ChartTooltip cursor={false} content={<ChartTooltipContent indicator="line" />} />
                 <Line
                   dataKey="temp"
                   type="natural"
-                  stroke="#8884d8"
+                  stroke="#bb86fc"
                   strokeWidth={2}
                   dot={{ fill: 'var(--color-desktop)' }}
                   activeDot={{ r: 6 }}
                 >
-                  <LabelList position="top" offset={12} fill="#FFFFFF" fontSize={12} />
+                  <LabelList position="top" offset={12} fill="#f0f0f0" fontSize={12} />
                 </Line>
               </LineChart>
             </ChartContainer>
