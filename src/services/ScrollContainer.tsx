@@ -1,48 +1,104 @@
-import { useEffect } from 'react';
-import LandingPage from '../pages/LandingPage';
-import SensorStatuspage from '../pages/SensorStatusPage';
-import DashboardPage from '../components/dashboardUI'
-import AboutUs from '../pages/AboutUsPage'
+import { useEffect, useRef, useState, lazy, Suspense } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-// PROBABLY MOVE THIS INTO ANOTHER FOLDER???
+const LandingPage = lazy(() => import('../pages/LandingPage'));
+const SensorStatuspage = lazy(() => import('../pages/SensorStatusPage'));
+const DashboardPage = lazy(() => import('../components/dashboardUI'));
+const AboutUs = lazy(() => import('../pages/AboutUsPage'));
 
-const scrollToSection = (sectionIndex: number) => {
-    const section = document.querySelectorAll('.section')[sectionIndex];
+const ScrollContainer: React.FC = () => {
+  const sectionsRef = useRef<Array<HTMLDivElement | null>>([]);
+  const [currentSection, setCurrentSection] = useState<number>(0);
+  const navigate = useNavigate();
+
+  const scrollToSection = (index: number) => {
+    const section = sectionsRef.current[index];
     if (section) {
       section.scrollIntoView({ behavior: 'smooth' });
+      setCurrentSection(index);
+      updateURL(index);
     }
   };
-  
 
-const ScrollContainer = () => {
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      const windowHeight = window.innerHeight;
-      
-      // Implement lazy loading or trigger animations based on scrollPosition
+    const options: IntersectionObserverInit = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.5,
     };
 
-    window.addEventListener('scroll', handleScroll);
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const index = entry.target.getAttribute('data-index');
+          if (index) {
+            const sectionIndex = Number(index);
+            setCurrentSection(sectionIndex);
+            updateURL(sectionIndex);
+          }
+        }
+      });
+    }, options);
+
+    sectionsRef.current.forEach((section) => {
+      if (section) observer.observe(section);
+    });
+
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      sectionsRef.current.forEach((section) => {
+        if (section) observer.unobserve(section);
+      });
     };
   }, []);
 
+  const updateURL = (index: number) => {
+    const paths = ['/', '/sensor-status', '/dashboard', '/about'];
+    navigate(paths[index], { replace: true });
+  };
+
   return (
     <div>
-      <div className="section" style={{ height: '100vh' }}>
-        <LandingPage />
+      <div
+        className="section"
+        data-index="0"
+        ref={(el) => (sectionsRef.current[0] = el)}
+        style={{ height: '100vh' }}
+      >
+        <Suspense fallback={<div>Loading...</div>}>
+          <LandingPage scrollToSection={scrollToSection} />
+        </Suspense>
       </div>
-      <div className="section" style={{ height: 'auto' }}>
-        <SensorStatuspage />
+      <div
+        className="section"
+        data-index="1"
+        ref={(el) => (sectionsRef.current[1] = el)}
+        style={{ height: 'auto' }}
+      >
+        <Suspense fallback={<div>Loading...</div>}>
+          <SensorStatuspage />
+        </Suspense>
       </div>
-      <div className="section" style={{ height: 'auto' }}>
-        <DashboardPage />
+      <div
+        className="section"
+        data-index="2"
+        ref={(el) => (sectionsRef.current[2] = el)}
+        style={{ height: 'auto' }}
+      >
+        <Suspense fallback={<div>Loading...</div>}>
+          <DashboardPage />
+        </Suspense>
       </div>
-      <div className ="section" style={{ height: '100vh'}}>
-        <AboutUs />
+      <div
+        className="section"
+        data-index="3"
+        ref={(el) => (sectionsRef.current[3] = el)}
+        style={{ height: '100vh' }}
+      >
+        <Suspense fallback={<div>Loading...</div>}>
+          <AboutUs />
+        </Suspense>
       </div>
+      <div>Current Section: {currentSection}</div>
     </div>
   );
 };
