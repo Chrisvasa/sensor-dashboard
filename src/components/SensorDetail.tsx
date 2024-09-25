@@ -1,5 +1,5 @@
 import React from 'react';
-import { SensorData } from "@/types/SensorData";
+import { Sensor } from "@/types/Sensor";
 import { TrendingUp } from 'lucide-react';
 import {
   Card,
@@ -22,66 +22,68 @@ const chartConfig = {
     label: 'Temperature',
     color: 'hsl(var(--chart-1))',
   },
-  mobile: {
-    label: 'Mobile',
-    color: 'hsl(var(--chart-2))',
-  },
 } satisfies ChartConfig;
 
-const SensorDetail: React.FC<{ sensor: SensorData }> = ({ sensor }) => {
+const SensorDetail: React.FC<{ sensor: Sensor }> = ({ sensor }) => {
+  const measurements = sensor.measurements || []; // Default to an empty array if measurements is undefined
+
   return (
     <div className="p-4 text-white">
       <Card className="border-transparent focus:border-transparent focus:ring-0">
         <CardHeader>
           <CardTitle>{sensor.name}</CardTitle>
-          <CardDescription>January - June 2024</CardDescription>
+          <CardDescription>Recent Measurements</CardDescription>
         </CardHeader>
         <CardContent>
-          <ChartContainer config={chartConfig}>
-            <LineChart
-              data={sensor.chartData}
-              margin={{
-                top: 20,
-                left: 12,
-                right: 12,
-              }}
-            >
-              <CartesianGrid vertical={false} />
-              <YAxis
-                label={{ value: 'Temperature (°C)', angle: -90, position: 'insideLeft', fill: '#8884d8' }}
-                tickLine={false}
-                axisLine={false}
-                tickFormatter={(value) => `${value}°C`}
-                tick={{ style: { fill: '#FFFFFF' } }}
-              />
-              <XAxis
-                dataKey="month"
-                tickLine={false}
-                axisLine={false}
-                tickMargin={8}
-                tickFormatter={(value) => value.slice(0, 3)}
-                tick={{ style: { fill: '#FFFFFF' } }}
-              />
-              <ChartTooltip cursor={false} content={<ChartTooltipContent indicator="line" />} />
-              <Line
-                dataKey="temperature"
-                type="natural"
-                stroke="#8884d8"
-                strokeWidth={2}
-                dot={{ fill: 'var(--color-desktop)' }}
-                activeDot={{ r: 6 }}
+          {measurements.length > 0 ? (
+            <ChartContainer config={chartConfig}>
+              <LineChart
+                data={measurements}
+                margin={{
+                  top: 20,
+                  left: 12,
+                  right: 12,
+                }}
               >
-                <LabelList position="top" offset={12} fill="#FFFFFF" fontSize={12} />
-              </Line>
-            </LineChart>
-          </ChartContainer>
+                <CartesianGrid vertical={false} />
+                <YAxis
+                  label={{ value: 'Temperature (°C)', angle: -90, position: 'insideLeft', fill: '#8884d8' }}
+                  tickLine={false}
+                  axisLine={false}
+                  tickFormatter={(value) => `${value}°C`}
+                  tick={{ style: { fill: '#FFFFFF' } }}
+                />
+                <XAxis
+                  dataKey="measurementTime"
+                  tickLine={false}
+                  axisLine={false}
+                  tickMargin={8}
+                  tickFormatter={(value) => new Date(value).toLocaleDateString()}
+                  tick={{ style: { fill: '#FFFFFF' } }}
+                />
+                <ChartTooltip cursor={false} content={<ChartTooltipContent indicator="line" />} />
+                <Line
+                  dataKey="temp"
+                  type="natural"
+                  stroke="#8884d8"
+                  strokeWidth={2}
+                  dot={{ fill: 'var(--color-desktop)' }}
+                  activeDot={{ r: 6 }}
+                >
+                  <LabelList position="top" offset={12} fill="#FFFFFF" fontSize={12} />
+                </Line>
+              </LineChart>
+            </ChartContainer>
+          ) : (
+            <div>No chart data available for this sensor</div>
+          )}
         </CardContent>
         <CardFooter className="flex-col items-start gap-2 text-sm">
           <div className="flex gap-2 font-medium leading-none">
             Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
           </div>
           <div className="leading-none text-muted-foreground">
-            Showing total visitors for the last 6 months
+            Showing temperature trends for the recent period
           </div>
         </CardFooter>
       </Card>
