@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, lazy, Suspense } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+const Header = lazy(() => import('../components/Header'));
 const LandingPage = lazy(() => import('../pages/LandingPage'));
 const SensorStatuspage = lazy(() => import('../pages/SensorStatusPage'));
 const DashboardPage = lazy(() => import('../components/dashboardUI'));
@@ -52,12 +53,22 @@ const ScrollContainer: React.FC = () => {
   }, []);
 
   const updateURL = (index: number) => {
-    const paths = ['/', '/sensor-status', '/dashboard', '/about'];
+    const paths = ['/', '/status', '/dashboard', '/about'];
     navigate(paths[index], { replace: true });
   };
 
   return (
     <div>
+      <div
+        className="section"
+        data-index="0"
+        ref={(el) => (sectionsRef.current[0] = el)}
+        style={{ height: 'auto' }}
+      >
+        <Suspense fallback={<div>Loading...</div>}>
+          <Header scrollToSection={scrollToSection}/>
+        </Suspense>
+      </div>
       <div
         className="section"
         data-index="0"
