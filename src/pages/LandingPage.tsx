@@ -3,7 +3,11 @@ import { ArrowDown } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Link } from 'react-router-dom';
 
-export default function LandingPage() {
+
+interface LandingPageProps {
+  scrollToSection: (index: number) => void;
+}
+export default function LandingPage({scrollToSection}: LandingPageProps) {
   const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
@@ -46,7 +50,8 @@ export default function LandingPage() {
             Monitor and analyze sensor data in real-time.
           </p>
           <Link to="/dashboard">
-            <Button variant="outline" className='hover:bg-zinc-900 cursor-pointer '>Dashboard</Button>
+            <Button variant="outline" className='hover:bg-zinc-900 cursor-pointer'
+            onClick={() => scrollToSection(2)}>Dashboard</Button>
           </Link>
         </div>
       </div>
