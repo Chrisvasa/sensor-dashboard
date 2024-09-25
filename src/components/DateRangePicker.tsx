@@ -15,7 +15,7 @@ type DateRangePickerProps = {
 export function DateRangePicker({ dateRange, setDateRange }: DateRangePickerProps) {
   return (
     <Popover>
-      <PopoverTrigger asChild>
+      <PopoverTrigger asChild className="bg-d-dark-300 rounded shadow-clean hover:bg-d-dark-400">
         <Button
           id="date"
           variant={"outline"}
@@ -38,7 +38,7 @@ export function DateRangePicker({ dateRange, setDateRange }: DateRangePickerProp
           )}
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-auto p-0 bg-gray-800" align="start">
+      <PopoverContent className="w-auto p-0 bg-d-dark-300" align="start">
         <Calendar
           initialFocus
           mode="range"
@@ -46,7 +46,7 @@ export function DateRangePicker({ dateRange, setDateRange }: DateRangePickerProp
           selected={dateRange}
           onSelect={setDateRange}
           numberOfMonths={2}
-          className="bg-gray-800 text-white"
+          className="bg-d-dark-300 text-white"
         />
       </PopoverContent>
     </Popover>

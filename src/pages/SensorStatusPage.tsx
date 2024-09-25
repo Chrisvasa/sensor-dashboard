@@ -99,12 +99,12 @@ export default function SensorStatusPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background text-foreground p-4 sm:p-6 md:p-8 space-y-6">
-      <Card className="bg-card border-transparent focus:border-transparent focus:ring-0 shadow-mac">
+    <div className="min-h-screen p-4 sm:p-6 md:p-8 space-y-6">
+      <Card className="bg-d-dark-200 border-transparent focus:border-transparent focus:ring-0 shadow-mac">
         <CardHeader className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div>
-            <CardTitle className="text-2xl font-bold">Sensor Measurements</CardTitle>
-            <CardDescription className="text-muted-foreground">
+            <CardTitle className="text-2xl text-d-primary-200 font-bold">Sensor Measurements</CardTitle>
+            <CardDescription className="text-custom-text">
               Overview of all sensor measurements
             </CardDescription>
           </div>
@@ -126,10 +126,10 @@ export default function SensorStatusPage() {
         </CardContent>
       </Card>
 
-      <Card className="bg-card border-transparent focus:border-transparent focus:ring-0 shadow-mac">
+      <Card className="bg-d-dark-200 border-transparent focus:border-transparent focus:ring-0 shadow-mac">
         <CardHeader>
-          <CardTitle className="text-2xl font-bold">Sensor Status</CardTitle>
-          <CardDescription className="text-muted-foreground">
+          <CardTitle className="text-2xl font-bold text-d-primary-200">Sensor Status</CardTitle>
+          <CardDescription className="text-custom-text">
             Current status and uptime of all sensors
           </CardDescription>
         </CardHeader>

@@ -32,16 +32,16 @@ const teamMembers: TeamMember[] = [
     id: 2,
     name: "Christopher Vasankari",
     role: "Frontend",
-    image: "/src/assets/images/oldchum.png?height=400&width=400",
+    image: "/src/assets/images/chris.jpg?height=400&width=400",
     bio: "Christ Orphan loves bob",
-    resumeUrl: "/bob-smith-resume.pdf",
+    resumeUrl: "/src/assets/resumes/ChristopherVasankari_CV.pdf",
   },
   {
     id: 3,
     name: "Nicole Nilsson",
     role: "Backend",
     image: "/src/assets/images/Nicolen.jpg?height=400&width=400",
-    bio: "Nicole brings her extensive experience in finance to help guide our company's growth and investment strategies.",
+    bio: "Nicole is a quick learner with a strong passion for programming, particularly in embedded systems and backend development. Always eager to expand their knowledge, they enjoy solving complex problems and continuously improving their skills in these areas.",
     resumeUrl: "/carol-williams-resume.pdf",
   },
   {
@@ -66,18 +66,12 @@ export default function AboutUs() {
         {teamMembers.map((member) => (
           <div key={member.id} className="text-center text-slate-50">
             <img
+              className="w-[200px] h-[200px] rounded-full object-cover mx-auto mb-4 cursor-pointer hover:opacity-80 transition-opacity"
               src={member.image}
               alt={member.name}
               width={200}
               height={200}
-              className="rounded-full mx-auto mb-4 cursor-pointer hover:opacity-80 transition-opacity"
               onClick={() => setSelectedMember(member)}
-              style={{
-                width: "200px",
-                height: "200px",
-                borderRadius: "50%",
-                objectFit: "cover",
-              }}
             />
             <h2 className="text-xl font-semibold">{member.name}</h2>
             <p className="text-gray-400">{member.role}</p>
@@ -110,17 +104,11 @@ export default function AboutUs() {
             </DialogHeader>
             <div className="mt-4">
               <img
+                className="w-[150px] h-[150px] rounded-full object-cover mx-auto mb-4"
                 src={selectedMember.image}
                 alt={selectedMember.name}
                 width={150}
                 height={150}
-                className="rounded-full mx-auto mb-4"
-                style={{
-                  width: "150px",
-                  height: "150px",
-                  borderRadius: "50%",
-                  objectFit: "cover",
-                }}
               />
               <p className="text-center mb-4 text-slate-50">
                 {selectedMember.bio}

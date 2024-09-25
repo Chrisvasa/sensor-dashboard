@@ -4,31 +4,37 @@ import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { MoonIcon, MenuIcon } from "lucide-react"
 
-export const Header = () => {
+interface LandingPageProps {
+  scrollToSection: (index: number) => void;
+}
+
+export default function Header({scrollToSection}: LandingPageProps) {
   const [isOpen, setIsOpen] = useState(false)
 
   const links = [
-    { to: "/sensors", label: "Sensor Data" },
-    { to: "/stats", label: "Stats" },
+    { label: "Status" },
+    { label: "Dashboard" },
+    { label: "About us" },
   ]
 
   return (
     <>
       {/* Desktop header */}
-      <header className="fixed top-0 left-0 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 z-50 border-b border-border hidden md:block">
+      <header className="fixed top-0 left-0 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 z-50 border-b border-d-primary-300 border-opacity-50 hidden md:block">
         <nav className="container mx-auto p-4 flex items-center justify-between">
           <div className="text-xl font-bold">
-            <Link to="/" className="text-primary hover:text-primary/80 transition-colors">
+            <Link to="" onClick={() => scrollToSection(0)} className="text-custom-text hover:text-custom-title/80 transition-colors">
               Sensor Chadboard
             </Link>
           </div>
           
           <ul className="flex space-x-4">
-            {links.map((link) => (
-              <li key={link.to}>
+            {links.map((link, index) => (
+              <li key={link.label}>
                 <Link
-                  to={link.to}
-                  className="text-muted-foreground hover:text-primary transition-colors"
+                  to=""
+                  onClick={() => scrollToSection(index + 1)}
+                  className="text-custom-title hover:text-custom-text transition-colors"
                 >
                   {link.label}
                 </Link>
@@ -36,8 +42,8 @@ export const Header = () => {
             ))}
           </ul>
           
-          <Button variant="outline" size="icon">
-            <MoonIcon className="h-[1.2rem] w-[1.2rem]" />
+          <Button className="border-d-primary-300 border-opacity-50" variant="outline" size="icon">
+            <MoonIcon className="h-[1.2rem] w-[1.2rem] text-d-primary-100" />
             <span className="sr-only">Toggle theme</span>
           </Button>
         </nav>
@@ -48,29 +54,33 @@ export const Header = () => {
         <nav className="container mx-auto p-4 flex items-center justify-center">
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
-              <Button variant="outline" size="icon" className="rounded-full">
-                <MenuIcon className="h-[1.2rem] w-[1.2rem]" />
+              <Button variant="outline" size="icon" className="rounded-full border-d-primary-100 border-opacity-40">
+                <MenuIcon className="h-[1.2rem] w-[1.2rem] text-d-primary-300 text-opacity-69" />
                 <span className="sr-only">Toggle menu</span>
               </Button>
             </SheetTrigger>
             <SheetContent side="bottom" className="h-[50vh] rounded-t-[20px]">
               <div className="flex flex-col items-center justify-center h-full">
-                <Link to="/" className="text-2xl font-bold text-primary mb-8" onClick={() => setIsOpen(false)}>
+                <Link to="/" className="text-2xl font-bold text-custom-text mb-8" onClick={() => setIsOpen(false)}>
                   Sensor Chadboard
                 </Link>
                 <nav className="flex flex-col items-center gap-6">
-                  {links.map((link) => (
+                  {links.map((link, index) => (
                     <Link
-                      key={link.to}
-                      to={link.to}
-                      className="text-xl text-muted-foreground hover:text-primary transition-colors"
-                      onClick={() => setIsOpen(false)}
+                      key={link.label}
+                      to=""
+                      className="text-xl text-custom-title hover:text-custom-text transition-colors"
+                      onClick={() => 
+                        {
+                          setIsOpen(false)
+                          scrollToSection(index + 1)
+                        }}
                     >
                       {link.label}
                     </Link>
                   ))}
-                  <Button variant="outline" size="icon" className="mt-4">
-                    <MoonIcon className="h-[1.2rem] w-[1.2rem]" />
+                  <Button variant="outline" size="icon" className="mt-4 border-d-primary-300 border-opacity-50">
+                    <MoonIcon className="h-[1.2rem] w-[1.2rem] text-d-primary-100" />
                     <span className="sr-only">Toggle theme</span>
                   </Button>
                 </nav>
