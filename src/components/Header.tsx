@@ -42,8 +42,8 @@ export default function Header({scrollToSection}: LandingPageProps) {
             ))}
           </ul>
           
-          <Button variant="outline" size="icon">
-            <MoonIcon className="h-[1.2rem] w-[1.2rem]" />
+          <Button variant="outline" size="icon" className='border-slate-50 border-opacity-60'>
+            <MoonIcon className="h-[1.2rem] w-[1.2rem] text-slate-100 text-opacity-60" />
             <span className="sr-only">Toggle theme</span>
           </Button>
         </nav>
@@ -82,8 +82,8 @@ export default function Header({scrollToSection}: LandingPageProps) {
                       {link.label}
                     </Link>
                   ))}
-                  <Button variant="outline" size="icon" className="mt-4">
-                    <MoonIcon className="h-[1.2rem] w-[1.2rem]" />
+                  <Button variant="outline" size="icon" className="mt-4 border-slate-50 border-opacity-60">
+                    <MoonIcon className="h-[1.2rem] w-[1.2rem] text-slate-100 border-opacity-60" />
                     <span className="sr-only">Toggle theme</span>
                   </Button>
                 </nav>
