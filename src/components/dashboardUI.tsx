@@ -124,7 +124,7 @@ export default function Dashboard() {
               </ScrollArea>
             </CardContent>
           </Card>
-
+          
           <Card className="col-span-2 xl:col-span-1 bg-dark-200 border-transparent focus:border-transparent focus:ring-0 shadow-mac">
             {selectedSensor && <SensorDetail sensor={selectedSensor} />}
           </Card>
