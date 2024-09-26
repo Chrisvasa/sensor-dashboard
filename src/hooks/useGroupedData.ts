@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { differenceInDays, format, parse } from "date-fns";
 import { DateRange } from "react-day-picker";
-import { Measurement } from "@/types/SensorTypes";
+import { Measurement } from "../types/Measurement";
 
 type GroupedDataEntry = {
   date: string;

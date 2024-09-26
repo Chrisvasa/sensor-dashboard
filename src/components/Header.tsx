@@ -23,7 +23,7 @@ export default function Header({scrollToSection}: LandingPageProps) {
       <header className="fixed top-0 left-0 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 z-50 border-b border-primary-300 border-opacity-50 hidden md:block">
         <nav className="container mx-auto p-4 flex items-center justify-between">
           <div className="text-xl font-bold">
-          <Link to="" onClick={() => scrollToSection(0)} className="text-primary hover:text-primary/80 transition-colors">
+          <Link to="" onClick={() => scrollToSection(0)} className="text-main hover:text-primary/80 transition-colors">
               Sensor Chadboard
             </Link>
           </div>

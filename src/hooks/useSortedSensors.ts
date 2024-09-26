@@ -1,5 +1,5 @@
 import { Sensor } from "../types/Sensor";
-import { SortConfig } from "@/services/data";
+import { SortConfig } from "../services/data";
 import { useMemo } from "react";
 
 // Manages sorting logic for sensor data, including sort configuration state.
@@ -21,10 +21,11 @@ export function useSortedSensors(
       sortableSensors.sort((a, b) => {
         const aValue = a[sortConfig.key];
         const bValue = b[sortConfig.key];
-
-        if (aValue == null) return 1;
-        if (bValue == null) return -1;
-
+  
+        if (aValue == null && bValue == null) return 0; // Both null, no sorting needed
+        if (aValue == null) return sortConfig.direction === 'asc' ? -1 : 1;
+        if (bValue == null) return sortConfig.direction === 'asc' ? 1 : -1;
+  
         if (aValue < bValue) {
           return sortConfig.direction === 'asc' ? -1 : 1;
         }
@@ -36,6 +37,7 @@ export function useSortedSensors(
     }
     return sortableSensors;
   }, [sensorsWithComputedFields, sortConfig]);
+  
 
   const requestSort = (key: keyof Sensor | 'lastMeasurement') => {
     let direction: 'asc' | 'desc' = 'asc';

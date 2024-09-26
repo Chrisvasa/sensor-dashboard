@@ -12,10 +12,10 @@ export const SensorCard: React.FC<{
 
   return (
     <Card 
-      className={`transition-all duration-300 cursor-pointer h-full border-none bg-dark-300 ${
+      className={`transition-all duration-300 cursor-pointer h-full border-none bg-dark-200 shadow-clean ${
         selected 
-          ? 'hover:shadow-clean' 
-          : 'hover:shadow-clean'
+          ? 'hover:shadow-mac' 
+          : 'hover:shadow-mac'
       }`}
       onClick={onClick}
     >
@@ -25,7 +25,7 @@ export const SensorCard: React.FC<{
             <h3 className="text-sm font-medium truncate mr-2">{sensor.name}</h3>
             {selected && <Badge variant="default" className="text-xs rounded-s-full text-primary-300">Selected</Badge>}
           </div>
-          <div className="bg-dark-400 bg-opacity-60 rounded-b-lg border-primary-100 border-solid border-t-2 p-1">
+          <div className="bg-dark-300 bg-opacity-60 rounded-b-lg border-primary-100 border-solid border-t-2 p-1">
           {latestMeasurement ? (
             <div className="space-y-1 text-sm">
               <div className="flex items-center">
