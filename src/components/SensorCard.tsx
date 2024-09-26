@@ -12,7 +12,7 @@ export const SensorCard: React.FC<{
 
   return (
     <Card 
-      className={`transition-all duration-300 cursor-pointer h-full border-none bg-dark-200 shadow-clean ${
+      className={`transition-all duration-300 cursor-pointer h-full border-none bg-dark-300 shadow-clean ${
         selected 
           ? 'hover:shadow-mac' 
           : 'hover:shadow-mac'
