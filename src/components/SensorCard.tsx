@@ -14,12 +14,12 @@ export const SensorCard: React.FC<{
     <Card 
       className={`transition-all duration-300 cursor-pointer h-full border-none bg-dark-300 ${
         selected 
-          ? 'shadow-custom' 
+          ? 'hover:shadow-clean' 
           : 'hover:shadow-clean'
       }`}
       onClick={onClick}
     >
-      <CardContent className="p-4 shadow-clean">
+      <CardContent className="p-4">
         <div className="flex flex-col h-full">
           <div className="flex justify-between items-start mb-2">
             <h3 className="text-sm font-medium truncate mr-2">{sensor.name}</h3>

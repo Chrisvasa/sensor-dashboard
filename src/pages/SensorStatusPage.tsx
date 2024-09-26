@@ -90,14 +90,6 @@ export default function SensorStatusPage() {
     return false;
   }, [dateRange]);
 
-  if (loading) {
-    return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
-  }
-
-  if (error) {
-    return <div className="min-h-screen flex items-center justify-center">Error: {error}</div>;
-  }
-
   return (
     <div className="min-h-screen p-4 sm:p-6 md:p-8 space-y-6">
       <Card className="bg-dark-200 border-transparent focus:border-transparent focus:ring-0 shadow-mac">

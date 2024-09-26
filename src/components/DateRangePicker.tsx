@@ -24,7 +24,7 @@ export function DateRangePicker({ dateRange, setDateRange }: DateRangePickerProp
             !dateRange && "text-title"
           )}
         >
-          <CalendarIcon className="mr-2 h-4 w-4" />
+          <CalendarIcon className="mr-2 h-4 w-4 text-primary-100" />
           {dateRange?.from ? (
             dateRange.to ? (
               <>

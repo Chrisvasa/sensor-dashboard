@@ -45,7 +45,7 @@ const SensorDetail: React.FC<{ sensor: Sensor }> = ({ sensor }) => {
               >
                 <CartesianGrid vertical={false} />
                 <YAxis
-                  label={{ value: 'Temperature (°C)', angle: -90, position: 'insideLeft', fill: '#c493fd' }}
+                  label={{ value: 'Temperature (°C)', angle: -90, position: 'insideLeft', fill: '#5C6BC0' }}
                   tickLine={false}
                   axisLine={false}
                   tickFormatter={(value) => `${value}°C`}
@@ -63,7 +63,7 @@ const SensorDetail: React.FC<{ sensor: Sensor }> = ({ sensor }) => {
                 <Line
                   dataKey="temp"
                   type="natural"
-                  stroke="#bb86fc"
+                  stroke="#3F51B5"
                   strokeWidth={2}
                   dot={{ fill: 'var(--color-desktop)' }}
                   activeDot={{ r: 6 }}

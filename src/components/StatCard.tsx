@@ -11,7 +11,7 @@ type StatCard = {
 
 export function StatCard({ totalMeasurements, averageMeasurementsPerDay, dateRange }: StatCard) {
   return (
-    <Card className="bg-dark-300 border-none shadow-img">
+    <Card className="bg-dark-300 border-none">
       <CardHeader>
         <CardTitle className="text-main">Statistics</CardTitle>
       </CardHeader>

@@ -32,7 +32,6 @@ export function useGroupedData(
 
     const groupedArray = Object.values(grouped);
 
-    // **Add this sorting step**
     groupedArray.sort((a, b) => {
       const dateA = parse(a.date, groupingFormat, new Date());
       const dateB = parse(b.date, groupingFormat, new Date());

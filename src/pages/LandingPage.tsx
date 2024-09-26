@@ -50,7 +50,7 @@ export default function LandingPage({scrollToSection}: LandingPageProps) {
             Monitor and analyze sensor data in real-time.
           </p>
           <Link to="/dashboard">
-            <Button variant="outline" className='bg-primary-100 hover:bg-primary-500 cursor-pointer text-black shadow-clean border-none'
+            <Button variant="outline" className='bg-primary-300 hover:bg-primary-400 cursor-pointer text-black shadow-clean border-none'
             onClick={() => scrollToSection(2)}>Dashboard</Button>
           </Link>
         </div>

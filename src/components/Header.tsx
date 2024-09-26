@@ -50,7 +50,7 @@ export default function Header({scrollToSection}: LandingPageProps) {
       </header>
 
       {/* Mobile bottom header */}
-      <header className="fixed bottom-0 left-0 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 z-50 border-t border-border md:hidden">
+      <header className="fixed bottom-0 left-0 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 z-50 border-t border-border border-primary-300 md:hidden">
         <nav className="container mx-auto p-4 flex items-center justify-center">
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
@@ -61,7 +61,10 @@ export default function Header({scrollToSection}: LandingPageProps) {
             </SheetTrigger>
             <SheetContent side="bottom" className="h-[50vh] rounded-t-[20px]">
               <div className="flex flex-col items-center justify-center h-full">
-                <Link to="/" className="text-2xl font-bold text-main mb-8" onClick={() => setIsOpen(false)}>
+                <Link to="/" className="text-2xl font-bold text-main mb-8" onClick={() => {
+                  setIsOpen(false)
+                  scrollToSection(0);
+                  }}>
                   Sensor Chadboard
                 </Link>
                 <nav className="flex flex-col items-center gap-6">
