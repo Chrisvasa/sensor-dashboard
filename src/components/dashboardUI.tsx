@@ -63,14 +63,11 @@ export default function Dashboard() {
   //if(error) return <div>Error loading sensors</div>
 
   return (
-    <div className="flex min-h-screen w-full flex-col text-slate-50">
-      <header className="sticky top-0 flex h-16 items-center gap-4 border-transparent focus:border-transparent focus:ring-0 bg-background px-4 md:px-6">
-        {/* Header content */}
-      </header>
+    <div className="flex min-h-screen w-full flex-col">
       <main className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-8">
-        <Card className="border-transparent focus:border-transparent focus:ring-0">
+        <Card className="border-transparent focus:border-transparent focus:ring-0 shadow-mac bg-dark-200">
           <CardHeader className="flex flex-col items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium w-full">
+            <CardTitle className="text-main font-medium w-full">
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-7 w-auto">
                 {sensorData.map(sensor => (
                   <div
@@ -89,8 +86,8 @@ export default function Dashboard() {
         </Card>
 
         <div className="grid gap-4 md:gap-8 lg:grid-cols-2 xl:grid-cols-2">
-          <Card className="col-span-2 xl:col-span-1">
-            <CardHeader className="flex flex-row items-center">
+          <Card className="col-span-2 xl:col-span-1 bg-dark-200 border-transparent focus:border-transparent focus:ring-0 shadow-mac">
+            <CardHeader className="flex flex-row items-center text-main">
               <div className="grid gap-2">
                 <CardTitle>Recent Temperatures</CardTitle>
               </div>
@@ -99,36 +96,36 @@ export default function Dashboard() {
               </Button>
             </CardHeader>
             <CardContent>
-            <ScrollArea className="h-[450px]">
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>Measurement Date</TableHead>
-                    <TableHead>Measurement Time</TableHead>
-                    <TableHead>Temperature (°C)</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {selectedSensor && selectedSensor.measurements.length > 0 ? (
-                    selectedSensor.measurements.map((measurement, index) => (
-                      <TableRow key={measurement.id}>
-                        <TableCell>{new Date(measurement.measurementTime).toLocaleDateString()}</TableCell>
-                        <TableCell>{new Date(measurement.measurementTime).toLocaleTimeString()}</TableCell>
-                        <TableCell>{measurement.temp}°C</TableCell>
-                      </TableRow>
-                    ))
-                  ) : (
+              <ScrollArea className="h-[450px]">
+                <Table>
+                  <TableHeader>
                     <TableRow>
-                      <TableCell colSpan={2}>No data available</TableCell>
+                      <TableHead>Measurement Date</TableHead>
+                      <TableHead>Measurement Time</TableHead>
+                      <TableHead>Temperature (°C)</TableHead>
                     </TableRow>
-                  )}
-                </TableBody>
-              </Table>
+                  </TableHeader>
+                  <TableBody className="text-title">
+                    {selectedSensor && selectedSensor.measurements.length > 0 ? (
+                      selectedSensor.measurements.map((measurement, index) => (
+                        <TableRow key={measurement.id}>
+                          <TableCell>{new Date(measurement.measurementTime).toLocaleDateString()}</TableCell>
+                          <TableCell>{new Date(measurement.measurementTime).toLocaleTimeString()}</TableCell>
+                          <TableCell>{measurement.temp}°C</TableCell>
+                        </TableRow>
+                      ))
+                    ) : (
+                      <TableRow>
+                        <TableCell colSpan={2}>No data available</TableCell>
+                      </TableRow>
+                    )}
+                  </TableBody>
+                </Table>
               </ScrollArea>
             </CardContent>
           </Card>
-
-          <Card className="col-span-2 xl:col-span-1">
+          
+          <Card className="col-span-2 xl:col-span-1 bg-dark-200 border-transparent focus:border-transparent focus:ring-0 shadow-mac">
             {selectedSensor && <SensorDetail sensor={selectedSensor} />}
           </Card>
         </div>

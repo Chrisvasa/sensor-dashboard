@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { differenceInDays, format, parse } from "date-fns";
 import { DateRange } from "react-day-picker";
-import { Measurement } from "@/types/SensorTypes";
+import { Measurement } from "../types/Measurement";
 
 type GroupedDataEntry = {
   date: string;
@@ -32,7 +32,6 @@ export function useGroupedData(
 
     const groupedArray = Object.values(grouped);
 
-    // **Add this sorting step**
     groupedArray.sort((a, b) => {
       const dateA = parse(a.date, groupingFormat, new Date());
       const dateB = parse(b.date, groupingFormat, new Date());

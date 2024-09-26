@@ -40,7 +40,7 @@ export function SensorMeasurementsChart({ data, isShortDateRange }: SensorMeasur
   const chartConfig = {
     measurements: {
       label: "Total Measurements",
-      color: "hsl(var(--primary))",
+      color: "rgb(18, 18, 18)",
     },
   } satisfies ChartConfig
 
@@ -80,7 +80,8 @@ export function SensorMeasurementsChart({ data, isShortDateRange }: SensorMeasur
           />
           <Bar
             dataKey="totalMeasurements"
-            fill="hsl(var(--primary))"
+            name="Total Measurements: "
+            fill="#5C6BC0"
             radius={[4, 4, 0, 0]}
             maxBarSize={isMobile ? 15 : (isShortDateRange ? 20 : 50)}
           />

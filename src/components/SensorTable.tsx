@@ -15,21 +15,21 @@ export function SensorTable({ sensors, requestSort }: SensorsTableProps) {
     <ScrollArea className="h-[250px]">
       <Table>
         <TableHeader>
-          <TableRow className="bg-gray-800 sticky top-0 ">
+          <TableRow className="bg-dark-300 sticky top-0 hover:bg-dark-300">
             <TableHead className="w-[200px]">
-              <Button variant="ghost" onClick={() => requestSort("name")} className="hover:text-primary pl-0">
+              <Button variant="ghost" onClick={() => requestSort("name")} className="hover:bg-dark-300 pl-0">
                 Sensor
                 <ArrowUpDown className="ml-2 h-4 w-4" />
               </Button>
             </TableHead>
             <TableHead>
-              <Button variant="ghost" onClick={() => requestSort("status")} className="hover:text-primary pl-0">
+              <Button variant="ghost" onClick={() => requestSort("status")} className="hover:bg-dark-300 pl-0">
                 Status
                 <ArrowUpDown className="ml-2 h-4 w-4" />
               </Button>
             </TableHead>
             <TableHead>
-              <Button variant="ghost" onClick={() => requestSort("lastMeasurement")} className="hover:text-primary pl-0">
+              <Button variant="ghost" onClick={() => requestSort("lastMeasurement")} className="hover:bg-dark-300 pl-0">
                 <span className="hidden md:inline">Last Measurement</span>
                 <span className="md:hidden">Last</span>
                 <ArrowUpDown className="ml-2 h-4 w-4" />
@@ -40,7 +40,7 @@ export function SensorTable({ sensors, requestSort }: SensorsTableProps) {
         <TableBody>
           {sensors.map((sensor) => (
             <TableRow key={sensor.id}>
-              <TableCell className="font-medium">{sensor.name}</TableCell>
+              <TableCell className="font-medium text-main">{sensor.name}</TableCell>
               <TableCell>
                 <span
                   className={`px-2 py-1 rounded-full text-xs font-semibold ${
@@ -50,7 +50,7 @@ export function SensorTable({ sensors, requestSort }: SensorsTableProps) {
                   {sensor.status ? "Online" : "Offline"}
                 </span>
               </TableCell>
-              <TableCell>
+              <TableCell className="text-main">
                 {sensor.lastMeasurement !== null ? `${sensor.lastMeasurement.toFixed(1)}°C` : "N/A"}
               </TableCell>
             </TableRow>

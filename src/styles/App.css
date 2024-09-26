@@ -6,59 +6,58 @@ html {
     scroll-behavior: smooth;
 }
 
-/* Midnight */
 @layer base {
     :root {
-        --background: 240 5% 6%;
-        --foreground: 60 5% 90%;
-        --primary: 240 0% 90%;
+        --background: 240 5% 6%; /* Corresponds to #121212 */
+        --foreground: 60 5% 90%; /* Corresponds to #8b8b8b */
+        --primary: 265 100% 85%; /* Corresponds to #bb86fc */
         --primary-foreground: 60 0% 0%;
-        --secondary: 240 4% 15%;
-        --secondary-foreground: 60 5% 85%;
-        --accent: 240 0% 13%;
-        --accent-foreground: 60 0% 100%;
-        --destructive: 0 60% 50%;
-        --destructive-foreground: 0 0% 98%;
-        --muted: 240 5% 25%;
-        --muted-foreground: 60 5% 85%;
-        --card: 240 4% 10%;
-        --card-foreground: 60 5% 90%;
-        --popover: 240 5% 15%;
-        --popover-foreground: 60 5% 85%;
-        --border: 240 6% 20%;
-        --input: 240 6% 20%;
-        --ring: 240 5% 90%;
-        --chart-1: 359 2% 90%;
-        --chart-2: 240 1% 74%;
-        --chart-3: 240 1% 58%;
-        --chart-4: 240 1% 42%;
-        --chart-5: 240 2% 26%;
+        --secondary: 240 4% 15%; /* No update, remains same */
+        --secondary-foreground: 60 5% 85%; /* No update, remains same */
+        --accent: 240 0% 13%; /* No update, remains same */
+        --accent-foreground: 60 0% 100%; /* No update, remains same */
+        --destructive: 0 60% 50%; /* No update, remains same */
+        --destructive-foreground: 0 0% 98%; /* No update, remains same */
+        --muted: 240 5% 25%; /* Corresponds to #717171 */
+        --muted-foreground: 60 5% 85%; /* Corresponds to #8b8b8b */
+        --card: 240 4% 10%; /* Corresponds to #282828 */
+        --card-foreground: 60 5% 90%; /* Corresponds to #8b8b8b */
+        --popover: 240 5% 15%; /* Corresponds to #575757 */
+        --popover-foreground: 60 5% 85%; /* Corresponds to #8b8b8b */
+        --border: 240 6% 20%; /* Corresponds to #3f3f3f */
+        --input: 240 6% 20%; /* Corresponds to #3f3f3f */
+        --ring: 265 100% 85%; /* Corresponds to #bb86fc */
+        --chart-1: 265 100% 85%; /* Corresponds to #bb86fc */
+        --chart-2: 265 100% 83%; /* Corresponds to #c493fd */
+        --chart-3: 265 100% 80%; /* Corresponds to #cca1fd */
+        --chart-4: 265 100% 77%; /* Corresponds to #d4aefe */
+        --chart-5: 265 100% 74%; /* Corresponds to #dcbbfe */
     }
 
     .dark {
-        --background: 240 5% 6%;
-        --foreground: 60 5% 90%;
-        --primary: 240 0% 90%;
+        --background: 240 5% 6%; /* Corresponds to #121212 */
+        --foreground: 60 5% 90%; /* Corresponds to #8b8b8b */
+        --primary: 265 100% 85%; /* Corresponds to #bb86fc */
         --primary-foreground: 60 0% 0%;
-        --secondary: 240 4% 15%;
-        --secondary-foreground: 60 5% 85%;
-        --accent: 240 0% 13%;
-        --accent-foreground: 60 0% 100%;
-        --destructive: 0 60% 50%;
-        --destructive-foreground: 0 0% 98%;
-        --muted: 240 5% 25%;
-        --muted-foreground: 60 5% 85%;
-        --card: 240 4% 10%;
-        --card-foreground: 60 5% 90%;
-        --popover: 240 5% 15%;
-        --popover-foreground: 60 5% 85%;
-        --border: 240 6% 20%;
-        --input: 240 6% 20%;
-        --ring: 240 5% 90%;
-        --chart-1: 359 2% 90%;
-        --chart-2: 240 1% 74%;
-        --chart-3: 240 1% 58%;
-        --chart-4: 240 1% 42%;
-        --chart-5: 240 2% 26%;
+        --secondary: 240 4% 15%; /* No update, remains same */
+        --secondary-foreground: 60 5% 85%; /* No update, remains same */
+        --accent: 240 0% 13%; /* No update, remains same */
+        --accent-foreground: 60 0% 100%; /* No update, remains same */
+        --destructive: 0 60% 50%; /* No update, remains same */
+        --destructive-foreground: 0 0% 98%; /* No update, remains same */
+        --muted: 240 5% 25%; /* Corresponds to #717171 */
+        --muted-foreground: 60 5% 85%; /* Corresponds to #8b8b8b */
+        --card: 240 4% 10%; /* Corresponds to #282828 */
+        --card-foreground: 60 5% 90%; /* Corresponds to #8b8b8b */
+        --popover: 240 5% 15%; /* Corresponds to #575757 */
+        --popover-foreground: 60 5% 85%; /* Corresponds to #8b8b8b */
+        --border: 240 6% 20%; /* Corresponds to #3f3f3f */
+        --input: 240 6% 20%; /* Corresponds to #3f3f3f */
+        --ring: 265 100% 85%; /* Corresponds to #bb86fc */
+        --chart-1: 265 100% 85%; /* Corresponds to #bb86fc */
+        --chart-2: 265 100% 83%; /* Corresponds to #c493fd */
+        --chart-3: 265 100% 80%; /* Corresponds to #cca1fd */
+        --chart-4: 265 100% 77%; /* Corresponds to #d4aefe */
+        --chart-5: 265 100% 74%; /* Corresponds to #dcbbfe */
     }
 }

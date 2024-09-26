@@ -65,18 +65,12 @@ export default function AboutUs() {
         {teamMembers.map((member) => (
           <div key={member.id} className="text-center text-slate-50">
             <img
+              className="w-[200px] h-[200px] rounded-full object-cover mx-auto mb-4 cursor-pointer hover:opacity-80 transition-opacity"
               src={member.image}
               alt={member.name}
               width={200}
               height={200}
-              className="rounded-full mx-auto mb-4 cursor-pointer hover:opacity-80 transition-opacity"
               onClick={() => setSelectedMember(member)}
-              style={{
-                width: "200px",
-                height: "200px",
-                borderRadius: "50%",
-                objectFit: "cover",
-              }}
             />
             <h2 className="text-xl font-semibold">{member.name}</h2>
             <p className="text-gray-400">{member.role}</p>
@@ -87,7 +81,7 @@ export default function AboutUs() {
         <h1 className="text-2xl font-bold mb-4">
           Meet the Team Behind the Project
         </h1>
-        <p className="text-center mb-6 max-w-4xl">
+        <p className="text-center mb-6 max-w-4xl text-main">
           We’re a team of four students who love programming and getting
           creative with tech. For our school project, we connected temperature
           sensors to a database and built a cool frontend to display the data in
@@ -109,17 +103,11 @@ export default function AboutUs() {
             </DialogHeader>
             <div className="mt-4">
               <img
+                className="w-[150px] h-[150px] rounded-full object-cover mx-auto mb-4"
                 src={selectedMember.image}
                 alt={selectedMember.name}
                 width={150}
                 height={150}
-                className="rounded-full mx-auto mb-4"
-                style={{
-                  width: "150px",
-                  height: "150px",
-                  borderRadius: "50%",
-                  objectFit: "cover",
-                }}
               />
               <p className="text-center mb-4 text-slate-50">
                 {selectedMember.bio}
