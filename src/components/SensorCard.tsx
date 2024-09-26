@@ -23,7 +23,7 @@ export const SensorCard: React.FC<{
         <div className="flex flex-col h-full">
           <div className="flex justify-between items-start mb-2">
             <h3 className="text-sm font-medium truncate mr-2">{sensor.name}</h3>
-            {selected && <Badge variant="default" className="text-xs rounded-s-full text-primary-300">Selected</Badge>}
+            {selected && <Badge variant="default" className="text-xs rounded-s-full text-primary-100">Selected</Badge>}
           </div>
           <div className="bg-dark-300 bg-opacity-60 rounded-b-lg border-primary-100 border-solid border-t-2 p-1">
           {latestMeasurement ? (

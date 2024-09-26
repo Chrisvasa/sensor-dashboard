@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://localhost:8080', // Update with your API URL
+  baseURL: import.meta.env.VITE_API_BASE_URL, // Update with your API URL
 });
 
 export const fetchAllMeasurements = () => api.get('/measurement/getall');
