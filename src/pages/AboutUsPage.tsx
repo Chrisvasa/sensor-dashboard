@@ -81,7 +81,7 @@ export default function AboutUs() {
         <h1 className="text-2xl font-bold mb-4">
           Meet the Team Behind the Project
         </h1>
-        <p className="text-center mb-6 max-w-4xl">
+        <p className="text-center mb-6 max-w-4xl text-main">
           We’re a team of four students who love programming and getting
           creative with tech. For our school project, we connected temperature
           sensors to a database and built a cool frontend to display the data in

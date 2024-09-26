@@ -80,6 +80,7 @@ export function SensorMeasurementsChart({ data, isShortDateRange }: SensorMeasur
           />
           <Bar
             dataKey="totalMeasurements"
+            name="Total Measurements: "
             fill="#5C6BC0"
             radius={[4, 4, 0, 0]}
             maxBarSize={isMobile ? 15 : (isShortDateRange ? 20 : 50)}
