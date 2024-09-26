@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { fetchAllSensors } from "../services/api";
 import { Sensor } from "@/types/Sensor";
 import { useQuery } from "@tanstack/react-query";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import {
   Card,
   CardContent,
@@ -98,6 +99,7 @@ export default function Dashboard() {
               </Button>
             </CardHeader>
             <CardContent>
+            <ScrollArea className="h-[450px]">
               <Table>
                 <TableHeader>
                   <TableRow>
@@ -122,6 +124,7 @@ export default function Dashboard() {
                   )}
                 </TableBody>
               </Table>
+              </ScrollArea>
             </CardContent>
           </Card>
 
