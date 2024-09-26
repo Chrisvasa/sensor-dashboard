@@ -41,14 +41,15 @@ const teamMembers: TeamMember[] = [
     name: "Nicole Nilsson",
     role: "Backend",
     image: "/src/assets/images/Nicolen.jpg?height=400&width=400",
-    bio: "Nicole is a quick learner with a strong passion for programming, particularly in embedded systems and backend development. Always eager to expand their knowledge, they enjoy solving complex problems and continuously improving their skills in these areas.",    resumeUrl: "/carol-williams-resume.pdf",
+    bio: "Nicole is a quick learner with a strong passion for programming, particularly in embedded systems and backend development. Always eager to expand their knowledge, they enjoy solving complex problems and continuously improving their skills in these areas.",    
+    resumeUrl: "/src/assets/resumes/Nicole Nilsson CV English.pdf",
   },
   {
     id: 4,
     name: "Erik Pettersson",
     role: "Embedded",
     image: "/src/assets/images/erkaP.jpg?height=400&width=400",
-    bio: "Erik excels in optimizing business operations and fostering a positive company culture.",
+    bio: "Erik is a backend and embedded systems developer with a passion for tackling complex challenges through code. He’s dedicated to learning cutting-edge technologies and building efficient, scalable systems. Currently, he is focused on embedded programming and backend development, working with platforms like Python, C, and various microcontrollers.",
     resumeUrl: "/src/assets/resumes/erik-pettersson-cv.pdf",
   },
 ];
