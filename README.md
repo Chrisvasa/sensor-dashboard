@@ -145,7 +145,11 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - **Tailwind CSS** - For utility-first CSS framework.
 - **Axios** - For promise-based HTTP client.
 
-You can add more sections to your README as your project evolves.
+### Acknowledgements
+Christopher Vasankari - Frontend
+Robert Johnson - Frontend
+Nicole Nilsson - Backend Java
+Erik Petterson - ESP32/Flet
 <!-- ### Testing
 [Instructions on how to run tests, if applicable.]
 ### Deployment
